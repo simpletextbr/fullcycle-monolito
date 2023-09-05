@@ -23,7 +23,7 @@ describe("Product Repository test", () => {
     await sequelize.close();
   });
 
-  it("should create a product", async () => {
+  it("should create a product with Repository", async () => {
     const productRepository = new ProductRepository();
 
     const input = {

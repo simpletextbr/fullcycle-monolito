@@ -9,7 +9,7 @@ describe("Add product usecase unit Test", () => {
     };
   };
 
-  it("should add a product", async () => {
+  it("should add a product with usecase", async () => {
     const productRepository = productRepositoryMock();
     const usecase = new AddProductUseCase(productRepository);
 
