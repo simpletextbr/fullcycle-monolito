@@ -11,8 +11,4 @@ export default class Id implements ValueObject {
   get id(): string {
     return this._id;
   }
-
-  equals(id: Id): boolean {
-    return this.id === id.id;
-  }
 }
