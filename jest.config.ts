@@ -3,7 +3,9 @@
  * https://jestjs.io/docs/configuration
  */
 
-const config = {
+import type { Config } from "jest";
+
+const config: Config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -84,7 +86,7 @@ const config = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  modulePathIgnorePatterns: ["<rootDir>/dist/", "<rootDir>/node_modules/"],
 
   // Activates notifications for test results
   // notify: false,
