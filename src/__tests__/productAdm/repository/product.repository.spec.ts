@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
 import Product from "../../../modules/productAdm/domain/product.entity";
-import ProductModel from "../../../modules/productAdm/repository/product.model";
+import { ProductModel } from "../../../modules/productAdm/repository/product.model";
 import ProductRepository from "../../../modules/productAdm/repository/product.repository";
 
 describe("Product Repository test", () => {
@@ -39,18 +39,22 @@ describe("Product Repository test", () => {
 
     const result = await ProductModel.findOne({ where: { id: product.id.id } });
 
-    expect(product.id.id).toEqual(result.id);
-    expect(product.name).toBe(result.name);
-    expect(product.description).toBe(result.description);
-    expect(product.purchasePrice).toBe(result.purchasePrice);
-    expect(product.stock).toBe(result.stock);
+    expect(result.toJSON()).toStrictEqual({
+      id: input.id.id,
+      name: input.name,
+      description: input.description,
+      purchasePrice: input.purchasePrice,
+      stock: input.stock,
+      createdAt: expect.any(Date),
+      updatedAt: expect.any(Date),
+    });
   });
 
   it("should find a product", async () => {
     const productRepository = new ProductRepository();
 
-    const productCreated = await ProductModel.create({
-      id: "1",
+    await ProductModel.create({
+      id: "123",
       name: "Product 1",
       description: "Description 1",
       purchasePrice: 10,
@@ -59,12 +63,24 @@ describe("Product Repository test", () => {
       updatedAt: new Date(),
     });
 
-    const result = await productRepository.find("1");
+    const result = await productRepository.find("123");
 
-    expect(productCreated.id).toEqual(result.id.id);
-    expect(productCreated.name).toBe(result.name);
-    expect(productCreated.description).toBe(result.description);
-    expect(productCreated.purchasePrice).toBe(result.purchasePrice);
-    expect(productCreated.stock).toBe(result.stock);
+    expect(result).toStrictEqual({
+      id: "123",
+      name: "Product 1",
+      description: "Description 1",
+      purchasePrice: 10,
+      stock: 10,
+      createdAt: expect.any(Date),
+      updatedAt: expect.any(Date),
+    });
+  });
+
+  it("should throw an error when product not found", async () => {
+    const productRepository = new ProductRepository();
+
+    await expect(productRepository.find("123")).rejects.toThrow(
+      "Product with id 123 not found"
+    );
   });
 });
