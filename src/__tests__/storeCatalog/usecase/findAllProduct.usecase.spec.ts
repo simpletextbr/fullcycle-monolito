@@ -1,6 +1,6 @@
 import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
 import Product from "../../../modules/storeCatalog/domain/product.entity";
-import FindAllProductUsecase from "../../../modules/storeCatalog/usecase/findAllProducts/findAllProducts.usecase";
+import FindAllProductUsecase from "../../../modules/storeCatalog/usecase/findAll/findAll.usecase";
 
 const product = new Product({
   id: new Id("123"),

@@ -1,4 +1,8 @@
-export interface FindDetailedDto {
+export interface FindDetailedInputDto {
+  id: string;
+}
+
+export interface FindDetailedOutputDto {
   id: string;
   name: string;
   description: string;
