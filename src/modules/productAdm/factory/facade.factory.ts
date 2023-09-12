@@ -6,21 +6,11 @@ import CheckStockProductUseCase from "../usecase/checkStock/checkStock.product.u
 export default class ProductAdmFacadeFactory {
   static create() {
     const productRepository = new ProductRepository();
-    const usecase = new AddProductUseCase(productRepository);
+    const addProductUsecase = new AddProductUseCase(productRepository);
+    const checkStockUsecase = new CheckStockProductUseCase(productRepository);
     const facade = new ProductAdmFacade({
-      addProductUseCase: usecase,
-      checkStockUseCase: null,
-    });
-
-    return facade;
-  }
-
-  static checkStock() {
-    const productRepository = new ProductRepository();
-    const usecase = new CheckStockProductUseCase(productRepository);
-    const facade = new ProductAdmFacade({
-      addProductUseCase: null,
-      checkStockUseCase: usecase,
+      addProductUseCase: addProductUsecase,
+      checkStockUseCase: checkStockUsecase,
     });
 
     return facade;

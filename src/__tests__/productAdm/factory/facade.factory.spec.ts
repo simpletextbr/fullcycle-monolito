@@ -52,7 +52,7 @@ describe("Product Adm facade factory test", () => {
 
   it("should check Stock of a product with factory", async () => {
     const productFactory = ProductAdmFacadeFactory;
-    const facade = productFactory.checkStock();
+    const facade = productFactory.create();
 
     const input = {
       id: new Id("1"),
