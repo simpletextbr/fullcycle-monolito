@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
-import { ICheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
+import { CheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
 import ProductAdmFacadeFactory from "../../../modules/productAdm/factory/facade.factory";
 import { ProductModel } from "../../../modules/productAdm/repository/product.model";
 
@@ -72,7 +72,7 @@ describe("Product Adm facade factory test", () => {
       updatedAt: new Date(),
     });
 
-    const filter: ICheckStockFacadeInputDto = {
+    const filter: CheckStockFacadeInputDto = {
       productId: input.id.id,
     };
 

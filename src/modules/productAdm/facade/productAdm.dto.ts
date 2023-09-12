@@ -1,4 +1,4 @@
-export interface IAddProductFacadeInputDto {
+export interface AddProductFacadeInputDto {
   id?: string;
   name: string;
   description: string;
@@ -6,11 +6,11 @@ export interface IAddProductFacadeInputDto {
   stock: number;
 }
 
-export interface ICheckStockFacadeInputDto {
+export interface CheckStockFacadeInputDto {
   productId: string;
 }
 
-export interface ICheckStockFacadeOutputDto {
+export interface CheckStockFacadeOutputDto {
   productId: string;
   stock: number;
   hasStock: boolean;
