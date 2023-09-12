@@ -11,6 +11,7 @@ export interface ICheckStockFacadeInputDto {
 }
 
 export interface ICheckStockFacadeOutputDto {
+  productId: string;
   stock: number;
   hasStock: boolean;
 }

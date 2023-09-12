@@ -1,3 +1,4 @@
+import Id from "../../@shared/domain/valueObject/id.valueObject";
 import Product from "../domain/product.entity";
 import IProductGateway from "../gateway/IProduct.gateway";
 import { ProductModel } from "./product.model";
@@ -21,6 +22,14 @@ export default class ProductRepository implements IProductGateway {
       throw new Error(`Product with id ${id} not found`);
     }
 
-    return product.toJSON();
+    const result = new Product({
+      id: new Id(product.id),
+      name: product.name,
+      description: product.description,
+      purchasePrice: product.purchasePrice,
+      stock: product.stock,
+    });
+
+    return result;
   }
 }

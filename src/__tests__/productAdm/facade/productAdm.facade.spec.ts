@@ -90,6 +90,7 @@ describe("Product Adm facade teste", () => {
     const result = await facade.checkStock(filter);
 
     expect(result).toStrictEqual({
+      productId: input.id.id,
       stock: input.stock,
       hasStock: true,
     });
