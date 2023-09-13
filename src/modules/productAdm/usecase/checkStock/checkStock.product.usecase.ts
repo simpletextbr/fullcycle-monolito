@@ -2,7 +2,7 @@ import IProductGateway from "../../gateway/IProduct.gateway";
 import {
   CheckStockProductInputDTO,
   CheckStockProductOutputDTO,
-} from "../DTOs/checkStock.product.dto";
+} from "../DTOs/checkStock.dto";
 
 export default class CheckStockProductUseCase {
   private _productRepository: IProductGateway;
