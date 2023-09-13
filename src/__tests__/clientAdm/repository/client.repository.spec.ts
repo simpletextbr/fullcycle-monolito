@@ -67,4 +67,12 @@ describe("Client Repository test", () => {
     expect(result.email).toEqual("client@email.com");
     expect(result.address).toEqual("rua dos bobos, 0");
   });
+
+  it("should throw an error when client not found", async () => {
+    const clientRepository = new ClientRepository();
+
+    await expect(clientRepository.find("123")).rejects.toThrow(
+      "Client with id 123 not found"
+    );
+  });
 });
