@@ -65,15 +65,11 @@ describe("Product Repository test", () => {
 
     const result = await productRepository.find("123");
 
-    expect(result).toStrictEqual({
-      id: "123",
-      name: "Product 1",
-      description: "Description 1",
-      purchasePrice: 10,
-      stock: 10,
-      createdAt: expect.any(Date),
-      updatedAt: expect.any(Date),
-    });
+    expect(result.id.id).toBe("123");
+    expect(result.name).toBe("Product 1");
+    expect(result.description).toBe("Description 1");
+    expect(result.purchasePrice).toBe(10);
+    expect(result.stock).toBe(10);
   });
 
   it("should throw an error when product not found", async () => {

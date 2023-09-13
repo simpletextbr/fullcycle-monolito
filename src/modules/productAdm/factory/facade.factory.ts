@@ -1,26 +1,17 @@
+import IProductAdmFacade from "../facade/IProductAdm";
 import ProductAdmFacade from "../facade/productAdm.facade";
 import ProductRepository from "../repository/product.repository";
 import AddProductUseCase from "../usecase/add/add.product.usecase";
 import CheckStockProductUseCase from "../usecase/checkStock/checkStock.product.usecase";
 
 export default class ProductAdmFacadeFactory {
-  static create() {
+  static create(): IProductAdmFacade {
     const productRepository = new ProductRepository();
-    const usecase = new AddProductUseCase(productRepository);
+    const addProductUsecase = new AddProductUseCase(productRepository);
+    const checkStockUsecase = new CheckStockProductUseCase(productRepository);
     const facade = new ProductAdmFacade({
-      addProductUseCase: usecase,
-      checkStockUseCase: null,
-    });
-
-    return facade;
-  }
-
-  static checkStock() {
-    const productRepository = new ProductRepository();
-    const usecase = new CheckStockProductUseCase(productRepository);
-    const facade = new ProductAdmFacade({
-      addProductUseCase: null,
-      checkStockUseCase: usecase,
+      addProductUseCase: addProductUsecase,
+      checkStockUseCase: checkStockUsecase,
     });
 
     return facade;

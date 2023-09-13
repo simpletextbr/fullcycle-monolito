@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
-import { ICheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
+import { CheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
 import ProductAdmFacade from "../../../modules/productAdm/facade/productAdm.facade";
 import { ProductModel } from "../../../modules/productAdm/repository/product.model";
 import ProductRepository from "../../../modules/productAdm/repository/product.repository";
@@ -83,13 +83,14 @@ describe("Product Adm facade teste", () => {
       updatedAt: new Date(),
     });
 
-    const filter: ICheckStockFacadeInputDto = {
+    const filter: CheckStockFacadeInputDto = {
       productId: input.id.id,
     };
 
     const result = await facade.checkStock(filter);
 
     expect(result).toStrictEqual({
+      productId: input.id.id,
       stock: input.stock,
       hasStock: true,
     });

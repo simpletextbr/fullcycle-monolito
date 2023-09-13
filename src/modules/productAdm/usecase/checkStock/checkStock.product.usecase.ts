@@ -17,6 +17,7 @@ export default class CheckStockProductUseCase {
     const product = await this._productRepository.find(input.productId);
     const hasStock = product.stock > 0;
     return {
+      productId: product.id.id,
       stock: product.stock,
       hasStock,
     };
