@@ -27,6 +27,8 @@ export default class ClientRepository implements IClientGateway {
       name: client.name,
       email: client.email,
       address: client.address,
+      createdAt: client.createdAt,
+      updatedAt: client.updatedAt,
     });
 
     return result;

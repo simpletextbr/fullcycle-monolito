@@ -51,7 +51,7 @@ describe("Client Repository test", () => {
   it("should find a client", async () => {
     const clientRepository = new ClientRepository();
 
-    await ClientModel.create({
+    const client = await ClientModel.create({
       id: "123",
       name: "Client 1",
       email: "client@email.com",
@@ -62,10 +62,12 @@ describe("Client Repository test", () => {
 
     const result = await clientRepository.find("123");
 
-    expect(result.id.id).toEqual("123");
-    expect(result.name).toEqual("Client 1");
-    expect(result.email).toEqual("client@email.com");
-    expect(result.address).toEqual("rua dos bobos, 0");
+    expect(result.id.id).toEqual(client.id);
+    expect(result.name).toEqual(client.name);
+    expect(result.email).toEqual(client.email);
+    expect(result.address).toEqual(client.address);
+    expect(result.createdAt).toEqual(client.createdAt);
+    expect(result.updatedAt).toEqual(client.updatedAt);
   });
 
   it("should throw an error when client not found", async () => {
