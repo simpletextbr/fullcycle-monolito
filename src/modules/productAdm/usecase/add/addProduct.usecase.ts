@@ -4,7 +4,7 @@ import IProductGateway from "../../gateway/IProduct.gateway";
 import {
   AddProductInputDTO,
   AddProductOutputDTO,
-} from "../DTOs/add.product.dto";
+} from "../DTOs/addProduct.dto";
 
 export default class AddProductUseCase {
   private _productRepository: IProductGateway;

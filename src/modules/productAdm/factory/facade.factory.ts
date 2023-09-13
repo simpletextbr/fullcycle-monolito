@@ -1,7 +1,7 @@
 import IProductAdmFacade from "../facade/IProductAdm";
 import ProductAdmFacade from "../facade/productAdm.facade";
 import ProductRepository from "../repository/product.repository";
-import AddProductUseCase from "../usecase/add/add.product.usecase";
+import AddProductUseCase from "../usecase/add/addProduct.usecase";
 import CheckStockProductUseCase from "../usecase/checkStock/checkStock.product.usecase";
 
 export default class ProductAdmFacadeFactory {
