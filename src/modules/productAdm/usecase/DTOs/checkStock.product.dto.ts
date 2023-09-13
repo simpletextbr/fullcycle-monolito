@@ -3,6 +3,7 @@ export interface CheckStockProductInputDTO {
 }
 
 export interface CheckStockProductOutputDTO {
+  productId: string;
   stock: number;
   hasStock: boolean;
 }

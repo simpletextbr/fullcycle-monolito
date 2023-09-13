@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
-import { ICheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
+import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
+import { CheckStockFacadeInputDto } from "../../../modules/productAdm/facade/productAdm.dto";
 import ProductAdmFacadeFactory from "../../../modules/productAdm/factory/facade.factory";
 import { ProductModel } from "../../../modules/productAdm/repository/product.model";
 
@@ -51,10 +52,10 @@ describe("Product Adm facade factory test", () => {
 
   it("should check Stock of a product with factory", async () => {
     const productFactory = ProductAdmFacadeFactory;
-    const facade = productFactory.checkStock();
+    const facade = productFactory.create();
 
     const input = {
-      id: "1",
+      id: new Id("1"),
       name: "Product 1",
       description: "Description 1",
       purchasePrice: 10,
@@ -62,7 +63,7 @@ describe("Product Adm facade factory test", () => {
     };
 
     await ProductModel.create({
-      id: input.id,
+      id: input.id.id,
       name: input.name,
       description: input.description,
       purchasePrice: input.purchasePrice,
@@ -71,13 +72,14 @@ describe("Product Adm facade factory test", () => {
       updatedAt: new Date(),
     });
 
-    const filter: ICheckStockFacadeInputDto = {
-      productId: input.id,
+    const filter: CheckStockFacadeInputDto = {
+      productId: input.id.id,
     };
 
     const result = await facade.checkStock(filter);
 
     expect(result).toStrictEqual({
+      productId: input.id.id,
       stock: input.stock,
       hasStock: true,
     });
