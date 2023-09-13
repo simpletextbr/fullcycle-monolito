@@ -1,7 +1,7 @@
 import Id from "../../../@shared/domain/valueObject/id.valueObject";
 import Client from "../../domain/client.entity";
 import IClientGateway from "../../gateway/IClient.gateway";
-import { AddClientInputDTO, AddClientOutputDTO } from "../dto/addClient.dto";
+import { AddClientInputDTO, AddClientOutputDTO } from "../DTOs/addClient.dto";
 
 export default class AddClientUseCase {
   private _clientRepository: IClientGateway;

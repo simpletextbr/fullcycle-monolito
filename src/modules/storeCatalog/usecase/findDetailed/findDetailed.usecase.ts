@@ -3,7 +3,7 @@ import IProductGateway from "../../gateway/product.gateway";
 import {
   FindDetailedInputDto,
   FindDetailedOutputDto,
-} from "../dto/findDetailed.dto";
+} from "../DTOs/findDetailed.dto";
 
 export default class FindDetailedProductUsecase implements IUsecase {
   private _productRepository: IProductGateway;
