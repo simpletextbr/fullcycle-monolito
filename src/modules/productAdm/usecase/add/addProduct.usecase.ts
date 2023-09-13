@@ -1,7 +1,10 @@
 import Id from "../../../@shared/domain/valueObject/id.valueObject";
 import Product from "../../domain/product.entity";
 import IProductGateway from "../../gateway/IProduct.gateway";
-import { AddProductInputDTO, AddProductOutputDTO } from "../DTOs/add.dto";
+import {
+  AddProductInputDTO,
+  AddProductOutputDTO,
+} from "../DTOs/addProduct.dto";
 
 export default class AddProductUseCase {
   private _productRepository: IProductGateway;

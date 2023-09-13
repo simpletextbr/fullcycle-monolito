@@ -4,7 +4,7 @@ import { CheckStockFacadeInputDto } from "../../../modules/productAdm/facade/pro
 import ProductAdmFacade from "../../../modules/productAdm/facade/productAdm.facade";
 import { ProductModel } from "../../../modules/productAdm/repository/product.model";
 import ProductRepository from "../../../modules/productAdm/repository/product.repository";
-import AddProductUseCase from "../../../modules/productAdm/usecase/add/add.product.usecase";
+import AddProductUseCase from "../../../modules/productAdm/usecase/add/addProduct.usecase";
 import CheckStockProductUseCase from "../../../modules/productAdm/usecase/checkStock/checkStock.product.usecase";
 
 describe("Product Adm facade teste", () => {
