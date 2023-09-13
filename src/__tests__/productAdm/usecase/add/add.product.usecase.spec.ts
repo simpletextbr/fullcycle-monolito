@@ -1,4 +1,4 @@
-import { AddProductInputDTO } from "../../../../modules/productAdm/usecase/DTOs/add.product.dto";
+import { AddProductInputDTO } from "../../../../modules/productAdm/usecase/DTOs/add.dto";
 import AddProductUseCase from "../../../../modules/productAdm/usecase/add/add.product.usecase";
 
 describe("Add product usecase unit Test", () => {
