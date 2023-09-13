@@ -3,7 +3,7 @@ import Client from "../domain/client.entity";
 import IClientGateway from "../gateway/IClient.gateway";
 import { ClientModel } from "./client.model";
 
-export default class clientRepository implements IClientGateway {
+export default class ClientRepository implements IClientGateway {
   async add(client: Client): Promise<void> {
     await ClientModel.create({
       id: client.id.id,
