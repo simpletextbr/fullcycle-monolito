@@ -41,8 +41,10 @@ export default class Payment extends BaseEntity implements AggregateRoot {
   process(): void {
     if (this._amount >= 100) {
       this.approve();
+      this.updatedAt = new Date();
     } else {
       this.decline();
+      this.updatedAt = new Date();
     }
   }
 
