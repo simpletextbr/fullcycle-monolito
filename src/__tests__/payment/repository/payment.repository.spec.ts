@@ -23,7 +23,7 @@ describe("Payment Repository test", () => {
     await sequelize.close();
   });
 
-  it("should create a payment with Repository", async () => {
+  it("should save a payment with Repository", async () => {
     const paymentRepository = new PaymentRepository();
     const payment = new Payment({
       id: new Id("1"),
