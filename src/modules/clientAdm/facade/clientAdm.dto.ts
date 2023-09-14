@@ -5,15 +5,6 @@ export interface AddClientFacadeInputDto {
   address: string;
 }
 
-export interface AddClientFacadeOutputDto {
-  id: string;
-  name: string;
-  email: string;
-  address: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 export interface FindClientFacadeInputDto {
   id: string;
 }

@@ -2,7 +2,6 @@ import IUsecase from "../../@shared/usecase/IUsecase";
 import IClientAdmFacade from "./IClientAdm";
 import {
   AddClientFacadeInputDto,
-  AddClientFacadeOutputDto,
   FindClientFacadeInputDto,
   FindClientFacadeOutputDto,
 } from "./clientAdm.dto";
@@ -21,9 +20,7 @@ export default class ClientAdmFacade implements IClientAdmFacade {
     this._findClientUseCase = usecaseProps.findClientUseCase;
   }
 
-  async addClient(
-    input: AddClientFacadeInputDto
-  ): Promise<AddClientFacadeOutputDto> {
+  async addClient(input: AddClientFacadeInputDto): Promise<void> {
     return this._addClientUseCase.execute(input);
   }
 
