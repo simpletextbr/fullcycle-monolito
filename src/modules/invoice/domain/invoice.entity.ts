@@ -43,7 +43,11 @@ export default class Invoice extends BaseEntity {
     return this._items;
   }
 
-  addItems(item: InvoiceItems): void {
+  addItems(item: InvoiceItems) {
     this._items.push(item);
+  }
+
+  total(): number {
+    return this._items.reduce((acc, item) => acc + item.price, 0);
   }
 }
