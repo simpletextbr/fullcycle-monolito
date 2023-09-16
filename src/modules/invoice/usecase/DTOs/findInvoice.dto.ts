@@ -2,6 +2,7 @@ type InvoiceItem = {
   id: string;
   name: string;
   price: number;
+  invoiceId: string;
 };
 
 type Address = {

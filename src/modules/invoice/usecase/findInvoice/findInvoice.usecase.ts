@@ -33,6 +33,7 @@ export default class FindInvoiceUsecase {
           id: item.id.id,
           name: item.name,
           price: item.price,
+          invoiceId: invoice.id.id,
         };
       }),
       total: invoice.total(),

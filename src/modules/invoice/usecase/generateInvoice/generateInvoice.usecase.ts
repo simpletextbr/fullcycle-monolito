@@ -19,7 +19,7 @@ export default class GenerateInvoiceUseCase {
   async execute(
     input: GenerateInvoiceUseCaseInputDto
   ): Promise<GenerateInvoiceUseCaseOutputDto> {
-    const invoiceId = new Id();
+    const invoiceId = new Id(input.id);
 
     const address = new Address({
       street: input.street,
@@ -60,6 +60,7 @@ export default class GenerateInvoiceUseCase {
         id: item.id.id,
         name: item.name,
         price: item.price,
+        invoiceId: invoiceId.id,
       };
 
       resultItems.push(invoceItem);
