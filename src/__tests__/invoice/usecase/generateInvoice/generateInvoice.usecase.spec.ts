@@ -1,19 +1,25 @@
+import Id from "../../../../modules/@shared/domain/valueObject/id.valueObject";
 import Address from "../../../../modules/invoice/domain/VOs/Address.vo";
 import Invoice from "../../../../modules/invoice/domain/invoice.entity";
 import InvoiceItems from "../../../../modules/invoice/domain/invoiceItems.entity";
 import GenerateInvoiceUseCase from "../../../../modules/invoice/usecase/generateInvoice/generateInvoice.usecase";
 
+const invoiceId = new Id("1");
+
 const invoiceItem = new InvoiceItems({
   name: "Item 1",
   price: 10,
+  invoiceId,
 });
 
 const invoiceItem2 = new InvoiceItems({
   name: "Item 2",
   price: 20,
+  invoiceId,
 });
 
 const invoice = new Invoice({
+  id: invoiceId,
   name: "Nome 1",
   document: "123456789",
   address: new Address({

@@ -19,6 +19,8 @@ export default class GenerateInvoiceUseCase {
   async execute(
     input: GenerateInvoiceUseCaseInputDto
   ): Promise<GenerateInvoiceUseCaseOutputDto> {
+    const invoiceId = new Id();
+
     const address = new Address({
       street: input.street,
       number: input.number,
@@ -34,6 +36,7 @@ export default class GenerateInvoiceUseCase {
       const invoceItem = new InvoiceItems({
         id: new Id(item.id),
         name: item.name,
+        invoiceId: invoiceId,
         price: item.price,
       });
 
@@ -41,6 +44,7 @@ export default class GenerateInvoiceUseCase {
     });
 
     const invoice = new Invoice({
+      id: invoiceId,
       name: input.name,
       document: input.document,
       address: address,

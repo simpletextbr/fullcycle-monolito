@@ -21,6 +21,7 @@ describe("Invoice Entity test", () => {
     const invoiceItem = new InvoiceItems({
       name: "Item 1",
       price: 10,
+      invoiceId: invoice.id,
     });
 
     invoice.addItems(invoiceItem);
@@ -28,6 +29,7 @@ describe("Invoice Entity test", () => {
     const invoiceItem2 = new InvoiceItems({
       name: "Item 2",
       price: 20,
+      invoiceId: invoice.id,
     });
 
     invoice.addItems(invoiceItem2);
@@ -54,6 +56,7 @@ describe("Invoice Entity test", () => {
     const invoiceItem = new InvoiceItems({
       name: "Item 1",
       price: 23,
+      invoiceId: invoice.id,
     });
 
     invoice.addItems(invoiceItem);
@@ -62,6 +65,7 @@ describe("Invoice Entity test", () => {
     const invoiceItem2 = new InvoiceItems({
       name: "Item 2",
       price: 10,
+      invoiceId: invoice.id,
     });
 
     invoice.addItems(invoiceItem2);

@@ -23,7 +23,7 @@ export class InvoiceItemsModel extends Model {
   invoiceId: string;
 
   @BelongsTo(() => InvoiceModel)
-  invoice: InvoiceModel;
+  invoice: InvoiceItemsModel;
 
   @Column({ allowNull: false })
   declare name: string;

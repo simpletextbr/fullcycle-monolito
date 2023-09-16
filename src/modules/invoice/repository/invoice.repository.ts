@@ -1,6 +1,7 @@
 import Id from "../../@shared/domain/valueObject/id.valueObject";
 import Address from "../domain/VOs/Address.vo";
 import Invoice from "../domain/invoice.entity";
+import InvoiceItems from "../domain/invoiceItems.entity";
 import IInvoiceGateway from "../gateway/invoice.gateway";
 import { InvoiceModel } from "./invoice.model";
 import { InvoiceItemsModel } from "./invoiceItems.model";
@@ -28,7 +29,14 @@ export default class InvoiceRepository implements IInvoiceGateway {
         state: invoice.state,
         zipCode: invoice.zipCode,
       }),
-      items: [],
+      items: invoice.items.map((item) => {
+        return new InvoiceItems({
+          id: new Id(item.id),
+          name: item.name,
+          invoiceId: new Id(invoice.id),
+          price: item.price,
+        });
+      }),
     });
   }
 
@@ -47,6 +55,7 @@ export default class InvoiceRepository implements IInvoiceGateway {
         items: input.items.map((item) => {
           return {
             id: item.id.id,
+            invoiceId: input.id.id,
             name: item.name,
             price: item.price,
           };
@@ -58,14 +67,30 @@ export default class InvoiceRepository implements IInvoiceGateway {
       { include: [InvoiceItemsModel] }
     );
 
+    const address = new Address({
+      street: input.address.street,
+      number: input.address.number,
+      complement: input.address.complement,
+      city: input.address.city,
+      state: input.address.state,
+      zipCode: input.address.zipCode,
+    });
+
+    const items = input.items.map((item) => {
+      return new InvoiceItems({
+        id: new Id(item.id.id),
+        invoiceId: new Id(item.invoiceId.id),
+        name: item.name,
+        price: item.price,
+      });
+    });
+
     return new Invoice({
       id: input.id,
       name: input.name,
       document: input.document,
-      address: input.address,
-      items: input.items,
-      createdAt: input.createdAt,
-      updatedAt: input.updatedAt,
+      address: address,
+      items: items,
     });
   }
 }

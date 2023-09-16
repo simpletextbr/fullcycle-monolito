@@ -41,7 +41,7 @@ export class InvoiceModel extends Model {
   declare zipCode: string;
 
   @HasMany(() => InvoiceItemsModel)
-  declare items: InvoiceItemsModel;
+  declare items: InvoiceItemsModel[];
 
   @Column({ allowNull: false })
   declare total: number;
