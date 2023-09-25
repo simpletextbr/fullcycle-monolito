@@ -1,6 +1,9 @@
+import Id from "../../../@shared/domain/valueObject/id.valueObject";
 import IUsecase from "../../../@shared/usecase/IUsecase";
 import IClientAdmFacade from "../../../clientAdm/facade/IClientAdm";
 import IProductAdmFacade from "../../../productAdm/facade/IProductAdm";
+import Product from "../../../storeCatalog/domain/product.entity";
+import IStoreCatalogFacade from "../../../storeCatalog/facade/IStoreCatalog";
 import {
   PlaceOrderInputDTO,
   PlaceOrderOutputDTO,
@@ -9,15 +12,18 @@ import {
 export interface PlaceOrderUseCaseProps {
   clientFacade: IClientAdmFacade;
   productFacade: IProductAdmFacade;
+  storeCatalogFacade: IStoreCatalogFacade;
 }
 
 export default class PlaceOrderUseCase implements IUsecase {
   private _clientFacade: IClientAdmFacade;
   private _productFacade: IProductAdmFacade;
+  private _storeCatalogFacade: IStoreCatalogFacade;
 
   constructor(PlaceOrderUseCaseProps: PlaceOrderUseCaseProps) {
     this._clientFacade = PlaceOrderUseCaseProps.clientFacade;
     this._productFacade = PlaceOrderUseCaseProps.productFacade;
+    this._storeCatalogFacade = PlaceOrderUseCaseProps.storeCatalogFacade;
   }
 
   async execute(input: PlaceOrderInputDTO): Promise<PlaceOrderOutputDTO> {
@@ -54,5 +60,24 @@ export default class PlaceOrderUseCase implements IUsecase {
         throw new Error(`Product ${product.productId} is out of stock`);
       }
     }
+  }
+
+  private async getProduct(productId: string): Promise<Product> {
+    const product = await this._storeCatalogFacade.findDetailed({
+      id: productId,
+    });
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    const productProps = {
+      id: new Id(product.id),
+      description: product.description,
+      name: product.name,
+      salesPrice: product.salesPrice,
+    };
+
+    return new Product(productProps);
   }
 }
