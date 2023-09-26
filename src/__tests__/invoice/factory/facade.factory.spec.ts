@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize-typescript";
 import Id from "../../../modules/@shared/domain/valueObject/id.valueObject";
-import Address from "../../../modules/invoice/domain/VOs/Address.vo";
 import InvoiceItems from "../../../modules/invoice/domain/invoiceItems.entity";
 import InvoiceFacadeFactory from "../../../modules/invoice/factory/facade.factory";
 import { InvoiceModel } from "../../../modules/invoice/repository/invoice.model";
@@ -25,14 +24,14 @@ describe("Invoice Facade test", () => {
     await sequelize.close();
   });
 
-  const address = new Address({
+  const address = {
     street: "Rua 1",
     number: "123",
     complement: "Complemento 1",
     city: "Cidade 1",
     state: "Estado 1",
     zipCode: "12345678",
-  });
+  };
 
   const items: InvoiceItems[] = [];
 
@@ -134,15 +133,16 @@ describe("Invoice Facade test", () => {
     );
 
     const result = await facade.findInvoice(input);
+
     expect(result.id).toBeDefined();
     expect(result.name).toEqual(invoice.name);
     expect(result.document).toEqual(invoice.document);
-    expect(result.address.street).toEqual(invoice.street);
-    expect(result.address.number).toEqual(invoice.number);
-    expect(result.address.complement).toEqual(invoice.complement);
-    expect(result.address.city).toEqual(invoice.city);
-    expect(result.address.state).toEqual(invoice.state);
-    expect(result.address.zipCode).toEqual(invoice.zipCode);
+    expect(result.street).toEqual(invoice.street);
+    expect(result.number).toEqual(invoice.number);
+    expect(result.complement).toEqual(invoice.complement);
+    expect(result.city).toEqual(invoice.city);
+    expect(result.state).toEqual(invoice.state);
+    expect(result.zipCode).toEqual(invoice.zipCode);
     expect(result.items).toHaveLength(2);
     expect(result.items[0].id).toEqual(invoice.items[0].id);
     expect(result.items[0].name).toEqual(invoice.items[0].name);
