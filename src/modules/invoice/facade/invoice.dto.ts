@@ -1,17 +1,8 @@
 type InvoiceItem = {
-  id: string;
+  id?: string;
   name: string;
   price: number;
   invoiceId: string;
-};
-
-type Address = {
-  street: string;
-  number: string;
-  complement: string;
-  city: string;
-  state: string;
-  zipCode: string;
 };
 
 export interface FindInvoiceFacadeInputDTO {
@@ -22,7 +13,12 @@ export interface FindInvoiceFacadeOutputDTO {
   id: string;
   name: string;
   document: string;
-  address: Address;
+  street: string;
+  number: string;
+  complement?: string;
+  city: string;
+  state: string;
+  zipCode: string;
   items: InvoiceItem[];
   total: number;
   createdAt: Date;
@@ -35,7 +31,7 @@ export interface GenerateInvoiceFacadeInputDto {
   document: string;
   street: string;
   number: string;
-  complement: string;
+  complement?: string;
   city: string;
   state: string;
   zipCode: string;

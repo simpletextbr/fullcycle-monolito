@@ -58,14 +58,12 @@ describe("Find invoice usecase unit Test", () => {
       id: "1",
       name: "Nome 1",
       document: "123456789",
-      address: {
-        street: "Rua 1",
-        number: "123",
-        complement: "Complemento 1",
-        city: "Cidade 1",
-        state: "Estado 1",
-        zipCode: "12345678",
-      },
+      street: "Rua 1",
+      number: "123",
+      complement: "Complemento 1",
+      city: "Cidade 1",
+      state: "Estado 1",
+      zipCode: "12345678",
       items: [
         {
           id: "1",
