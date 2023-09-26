@@ -29,8 +29,13 @@ describe("Client Repository test", () => {
     const input = {
       id: new Id("1"),
       name: "Client 1",
-      email: "client@email.com",
-      address: "rua dos bobos, 0",
+      document: "123456789",
+      street: "Rua 1",
+      number: "123",
+      complement: "Complemento 1",
+      city: "Cidade 1",
+      state: "Estado 1",
+      zipCode: "12345678",
     };
 
     const client = new Client(input);
@@ -41,8 +46,13 @@ describe("Client Repository test", () => {
     expect(result.toJSON()).toStrictEqual({
       id: input.id.id,
       name: input.name,
-      email: input.email,
-      address: input.address,
+      document: input.document,
+      street: input.street,
+      number: input.number,
+      complement: input.complement,
+      city: input.city,
+      state: input.state,
+      zipCode: input.zipCode,
       createdAt: expect.any(Date),
       updatedAt: expect.any(Date),
     });
@@ -54,8 +64,13 @@ describe("Client Repository test", () => {
     const client = await ClientModel.create({
       id: "123",
       name: "Client 1",
-      email: "client@email.com",
-      address: "rua dos bobos, 0",
+      document: "123456789",
+      street: "Rua 1",
+      number: "123",
+      complement: "Complemento 1",
+      city: "Cidade 1",
+      state: "Estado 1",
+      zipCode: "12345678",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -64,8 +79,13 @@ describe("Client Repository test", () => {
 
     expect(result.id.id).toEqual(client.id);
     expect(result.name).toEqual(client.name);
-    expect(result.email).toEqual(client.email);
-    expect(result.address).toEqual(client.address);
+    expect(result.document).toEqual(client.document);
+    expect(result.street).toEqual(client.street);
+    expect(result.number).toEqual(client.number);
+    expect(result.complement).toEqual(client.complement);
+    expect(result.city).toEqual(client.city);
+    expect(result.state).toEqual(client.state);
+    expect(result.zipCode).toEqual(client.zipCode);
     expect(result.createdAt).toEqual(client.createdAt);
     expect(result.updatedAt).toEqual(client.updatedAt);
   });

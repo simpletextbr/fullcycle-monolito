@@ -13,10 +13,25 @@ export class ClientModel extends Model {
   declare name: string;
 
   @Column({ allowNull: false })
-  declare email: string;
+  declare document: string;
 
   @Column({ allowNull: false })
-  declare address: string;
+  declare street: string;
+
+  @Column({ allowNull: false })
+  declare number: string;
+
+  @Column({ allowNull: true })
+  declare complement: string;
+
+  @Column({ allowNull: false })
+  declare city: string;
+
+  @Column({ allowNull: false })
+  declare state: string;
+
+  @Column({ allowNull: false })
+  declare zipCode: string;
 
   @Column({ allowNull: false })
   declare createdAt: Date;

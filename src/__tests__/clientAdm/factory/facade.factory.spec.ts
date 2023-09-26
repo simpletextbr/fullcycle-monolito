@@ -28,8 +28,13 @@ describe("Product Adm facade factory test", () => {
     const input = {
       id: "1",
       name: "Client 1",
-      email: "client@email.com",
-      address: "Address 1",
+      document: "123456789",
+      street: "Rua 1",
+      number: "123",
+      complement: "Complemento 1",
+      city: "Cidade 1",
+      state: "Estado 1",
+      zipCode: "12345678",
     };
 
     await facade.addClient(input);
@@ -39,8 +44,13 @@ describe("Product Adm facade factory test", () => {
     expect(result.toJSON()).toStrictEqual({
       id: input.id,
       name: input.name,
-      email: input.email,
-      address: input.address,
+      document: input.document,
+      street: input.street,
+      number: input.number,
+      complement: input.complement,
+      city: input.city,
+      state: input.state,
+      zipCode: input.zipCode,
       createdAt: expect.any(Date),
       updatedAt: expect.any(Date),
     });
@@ -57,8 +67,13 @@ describe("Product Adm facade factory test", () => {
     await ClientModel.create({
       id: input.id,
       name: "Client 1",
-      email: "email@email.com",
-      address: "Address 1",
+      document: "123456789",
+      street: "Rua 1",
+      number: "123",
+      complement: "Complemento 1",
+      city: "Cidade 1",
+      state: "Estado 1",
+      zipCode: "12345678",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -67,7 +82,12 @@ describe("Product Adm facade factory test", () => {
 
     expect(result.id).toBe(input.id);
     expect(result.name).toBe("Client 1");
-    expect(result.email).toBe("email@email.com");
-    expect(result.address).toBe("Address 1");
+    expect(result.document).toBe("123456789");
+    expect(result.street).toBe("Rua 1");
+    expect(result.number).toBe("123");
+    expect(result.complement).toBe("Complemento 1");
+    expect(result.city).toBe("Cidade 1");
+    expect(result.state).toBe("Estado 1");
+    expect(result.zipCode).toBe("12345678");
   });
 });
